@@ -1,0 +1,134 @@
+/* Navbar.module.css */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 0 20px;
+}
+
+.leftSection {
+    display: flex;
+    align-items: center;
+}
+
+.brandName {
+    margin-left: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.centerSection {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rightSection {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo {
+    color: #bd5e20;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0 20px;
+}
+
+.navItem {
+    padding: 0 15px;
+}
+
+.navList li {
+    padding: 0 15px;
+}
+
+.navList li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+}
+
+.actionButton, .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tryPro {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.icon {
+    margin: 8px;
+}
+
+.searchBar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 4px;
+    padding: 2px 8px;
+}
+.searchContainer {
+    display: flex;
+    align-items: center;
+}
+.searchInput {
+    border: none;
+    padding: 8px;
+    outline: none;
+}
+
+
+.searchIcon, .userIcon {
+    font-size: 1.2em;
+}
+
+.forArtistsContainer {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.forArtists {
+    color: white;
+    text-decoration: none;
+}
+.uploadButton {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.cloudIcon, .searchIcon, .uploadIcon, .userIcon, .bellIcon {
+    margin: 8px;
+    font-size: 1.2em;
+}
+.forArtistsContainer, .actionButton, .iconContainer {
+    margin: 0 8px;
+}

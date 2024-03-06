@@ -1,34 +1,26 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faPlay,
-    faPause,
-    faForward,
-    faBackward,
-    faStream,
-    faHeart,
-    faVolumeUp,
-    faRandom,
-    faRedo,
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faForward, faBackward, faStream, faHeart, faVolumeUp, faRandom, faRedo } from '@fortawesome/free-solid-svg-icons';
 
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
 
 import styles from './Player.module.css';
 
-// Default track with all the needed info
+// Default track
 const defaultTrack = {
     title: 'Default Title',
     artist: 'Default Artist',
-    audioUrl: 'default.mp3', // Placeholder, replace with your actual audio URL
-    duration: 300, // 5 minutes in seconds as an example
-    artwork: 'https://i1.sndcdn.com/avatars-LSx9qz6JSPb574JS-MwQJsw-t240x240.jpg', // Placeholder, replace with your actual artwork URL
+    audioUrl: 'default.mp3',
+    duration: 300,
+    artwork: 'https://i1.sndcdn.com/avatars-LSx9qz6JSPb574JS-MwQJsw-t240x240.jpg',
 };
 
 function Player({ track = defaultTrack }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
+    const [volume, setVolume] = useState(1); // Initial volume set to max
+    const [showVolumeControl, setShowVolumeControl] = useState(false);
     const audioRef = useRef(new Audio(track.audioUrl));
 
     useEffect(() => {
@@ -59,6 +51,10 @@ function Player({ track = defaultTrack }) {
         }
     }, [isPlaying]);
 
+    useEffect(() => {
+        audioRef.current.volume = volume;
+    }, [volume]);
+
     const togglePlayPause = () => {
         setIsPlaying(!isPlaying);
     };
@@ -66,6 +62,11 @@ function Player({ track = defaultTrack }) {
     const handleProgressChange = (newTime) => {
         audioRef.current.currentTime = newTime;
         setCurrentTime(newTime);
+    };
+
+    const handleVolumeChange = (event) => {
+        const newVolume = parseFloat(event.target.value);
+        setVolume(newVolume);
     };
 
     return (
@@ -82,22 +83,32 @@ function Player({ track = defaultTrack }) {
                 <FontAwesomeIcon icon={faRedo} className={styles.icon} />
             </div>
 
-            <div style={{ width: '50px' }} /> {/* Spacer */}
-
             <ProgressBar
                 currentTime={currentTime}
                 duration={track.duration}
                 onProgressChange={handleProgressChange}
             />
-
-            <div style={{ width: '50px' }} /> {/* Spacer */}
-
-            <div className={styles.volumeControl}>
-                <FontAwesomeIcon icon={faVolumeUp} className={styles.icon} />
-                {/* Volume slider/input */}
+            <div
+                className={styles.volumeControl}
+                onMouseEnter={() => setShowVolumeControl(true)}
+                onMouseLeave={() => setShowVolumeControl(false)}
+            >
+                <FontAwesomeIcon icon={faVolumeUp} className={styles.volumeIcon} />
+                {showVolumeControl && (
+                    <input
+                        type="range"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value={volume}
+                        onChange={handleVolumeChange}
+                        className={styles.volumeSlider}
+                    />
+                )}
             </div>
-
+            <img src={track.artwork} alt="Album Artwork" className={styles.artwork} />
             <TrackInfo title={track.title} artist={track.artist} />
+            <div style={{ width: '100px' }} /> {/* Spacer */}
 
             <FontAwesomeIcon icon={faHeart} className={styles.icon} />
             <FontAwesomeIcon icon={faStream} className={styles.icon} />

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './ProgressBar.module.css'; // Ensure you have the correct path
+import styles from './ProgressBar.module.css';
 
 function ProgressBar({ currentTime, duration, onProgressChange }) {
     const handleChange = (e) => {
@@ -8,6 +8,9 @@ function ProgressBar({ currentTime, duration, onProgressChange }) {
 
     return (
         <div className={styles.progressBarContainer}>
+            <div className={styles.currentTimeDisplay}>
+                {('0' + Math.floor(currentTime % 60)).slice(-2)}:{('0' + Math.floor((currentTime % 3600) / 60)).slice(-2)}
+            </div>
             <input
                 className={styles.progressBar}
                 type="range"
@@ -16,9 +19,8 @@ function ProgressBar({ currentTime, duration, onProgressChange }) {
                 value={currentTime}
                 onChange={handleChange}
             />
-            <div className={styles.timeDisplay}>
-                {Math.floor(currentTime / 60)}:{('0' + Math.floor(currentTime % 60)).slice(-2)} /
-                {Math.floor(duration / 60)}:{('0' + Math.floor(duration % 60)).slice(-2)}
+            <div className={styles.totalTimeDisplay}>
+                {'0' +Math.floor(duration / 3600)}:{('0' + Math.floor((duration % 3600) / 60)).slice(-2)}:{('0' + Math.floor(duration % 60)).slice(-2)}
             </div>
         </div>
     );

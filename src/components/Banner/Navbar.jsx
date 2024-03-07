@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaCloud, FaSearch, FaUpload, FaUser, FaBell } from 'react-icons/fa';
-import styles from '../../styles/components/Navbar.module.css';
+import styles from './Navbar.module.css';
 
 const Navbar = () => {
     return (

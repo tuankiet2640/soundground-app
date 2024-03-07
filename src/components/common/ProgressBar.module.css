@@ -1,6 +1,8 @@
 .progressBarContainer {
     position: relative;
     width: 600px;
+    display: flex;
+    align-items: center;
 }
 
 .progressBar {
@@ -32,12 +34,16 @@
     cursor: pointer;
 }
 
-.timeDisplay {
-    position: absolute;
-    right: 0;
-    top: 100%;
+.currentTimeDisplay {
     font-size: 0.8rem;
-    margin-top: 4px;
+    margin-right: 8px;
+    color: #333;
+    white-space: nowrap;
+}
+
+.totalTimeDisplay {
+    font-size: 0.8rem;
+    margin-left: 8px;
     color: #333;
     white-space: nowrap;
 }

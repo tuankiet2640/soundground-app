@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import Song from "../common/Song";
 
+
 const RecentlyPlayed = () => {
     // Simulating fetched songs. Replace this with actual fetch logic if needed.
     const [songs, setSongs] = useState([]);
@@ -18,8 +19,16 @@ const RecentlyPlayed = () => {
         return <p>Unable to fetch songs</p>
     }
 
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+    };
+
     return (
-        <div className="w-full pb-16">
+        <div className="w-full pb-16 flex">
             <h2 className="heading">Recently Played</h2>
                 {songs.map((song) => (
                     <div key={song.id} className="p-4">

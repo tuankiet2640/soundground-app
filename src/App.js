@@ -13,7 +13,6 @@ function App() {
         <Router>
             <Navbar />
             <Player />
-
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/browse" element={<Browse />} />

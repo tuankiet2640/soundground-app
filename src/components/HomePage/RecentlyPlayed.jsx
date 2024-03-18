@@ -7,7 +7,7 @@ import SampleNextArrow from "./SampleNextArrow";
 import SamplePrevArrow from "./SamplePrevArrow";
 
 const RecentlyPlayed = () => {
-    // Simulating fetched songs. Replace this with actual fetch logic later on.
+    // Simulating fetched player. Replace this with actual fetch logic later on.
     const [songs, setSongs] = useState([]);
 
     useEffect(() => {

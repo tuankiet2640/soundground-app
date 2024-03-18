@@ -1,14 +1,19 @@
 import React from 'react';
 import { FaPlay, FaPause } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { playSong } from '../../features/player/playerSlice';
 
 const Song = ({ song, isPlaying, onPlay, onPause }) => {
     const { title, artist, cover, url } = song;
+    const dispatch = useDispatch();
+
     const handlePlayPause = () => {
         if (isPlaying) {
             onPause();
         } else {
-            onPlay(url);
+            dispatch(playSong(song));
         }
+
     };
 
     return (

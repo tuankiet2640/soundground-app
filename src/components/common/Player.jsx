@@ -4,7 +4,7 @@ import { faPlay, faPause, faForward, faBackward, faStream, faHeart, faVolumeUp, 
 
 import ProgressBar from './ProgressBar';
 import TrackInfo from './TrackInfo';
-
+import { useSelector } from 'react-redux';
 import styles from './Player.module.css';
 
 // Default track
@@ -22,6 +22,7 @@ function Player({ track = defaultTrack }) {
     const [volume, setVolume] = useState(1); // Initial volume set to max
     const [showVolumeControl, setShowVolumeControl] = useState(false);
     const audioRef = useRef(new Audio(track.audioUrl));
+    const currentSong = useSelector((state) => state.player.currentSong);
 
     useEffect(() => {
         audioRef.current = new Audio(track.audioUrl);
@@ -41,7 +42,7 @@ function Player({ track = defaultTrack }) {
                 audioRef.current.pause();
             }
         };
-    }, [track]);
+    }, [currentSong]);
 
     useEffect(() => {
         if (isPlaying) {
@@ -106,8 +107,8 @@ function Player({ track = defaultTrack }) {
                     />
                 )}
             </div>
-            <img src={track.artwork} alt="Album Artwork" className={styles.artwork} />
-            <TrackInfo title={track.title} artist={track.artist} />
+            <img src={currentSong.cover} alt="Album Artwork" className={styles.artwork} />
+            <TrackInfo title={currentSong.title} artist={currentSong.artist} />
             <div style={{ width: '100px' }} /> {/* Spacer */}
 
             <FontAwesomeIcon icon={faHeart} className={styles.icon} />

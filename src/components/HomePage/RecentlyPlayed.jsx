@@ -3,6 +3,8 @@ import Slider from "react-slick";
 import Song from "../common/Song";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import SampleNextArrow from "./SampleNextArrow";
+import SamplePrevArrow from "./SamplePrevArrow";
 
 const RecentlyPlayed = () => {
     // Simulating fetched songs. Replace this with actual fetch logic later on.
@@ -21,20 +23,40 @@ const RecentlyPlayed = () => {
     }
 
     const settings = {
+        infinite: true,
         speed: 500,
         slidesToShow: 4,
-        slidesToScroll: 4,
-        arrows: true,
-        dots: true,
-        infinite: true,
-
-        appendDots: dots => (
-            <div style={{ backgroundColor:"#ddd", borderRadius: "10px" }}>
-              <ul style={{ margin: "1px" }}> {dots} </ul>
-            </div>
-        ),
-    };
-
+        slidesToScroll: 1,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
+        responsive: [
+          {
+            breakpoint: 1025,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 769,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+        ],
+      };
+    
 
 
     return (

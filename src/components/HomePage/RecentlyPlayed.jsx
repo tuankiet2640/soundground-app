@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const RecentlyPlayed = () => {
-    // Simulating fetched songs. Replace this with actual fetch logic if needed.
+    // Simulating fetched songs. Replace this with actual fetch logic later on.
     const [songs, setSongs] = useState([]);
 
     useEffect(() => {

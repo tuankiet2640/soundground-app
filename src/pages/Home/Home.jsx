@@ -1,4 +1,3 @@
-import Song from "../../components/common/Song";
 import RecentlyPlayed from "../../components/HomePage/RecentlyPlayed";
 
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
         <div className="left-space col-span-1 bg-slate-300	">
         </div>
         
-        <div className="home-song-items col-span-7 border-r border-gray-300">
+        <div className="home-song-items col-span-7 border-r border-gray-300 ">
           <RecentlyPlayed/>
         </div>
         <div className="personal-recommendation col-span-3">
